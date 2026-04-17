@@ -1,70 +1,149 @@
-# Getting Started with Create React App
+<div align="center">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 🛍️ Bhawani Enterprises
 
-## Available Scripts
+**A live client-facing product catalogue with real-time Supabase backend**
 
-In the project directory, you can run:
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev)
+[![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)](https://postgresql.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
+[![Live](https://img.shields.io/badge/Live-bhawanienterprise.co.in-1A56A8?style=for-the-badge&logo=vercel&logoColor=white)](https://bhawanienterprise.co.in)
 
-### `npm start`
+### 🌐 [bhawanienterprise.co.in](https://bhawanienterprise.co.in)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+</div>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 📖 About
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Bhawani Enterprises is a real client project — a professional product catalogue website built and deployed for an actual business. Customers can browse the full product range with a clean, fast UI backed by Supabase's real-time PostgreSQL database.
 
-### `npm run build`
+Built entirely solo: from requirements gathering and UI design through to deployment. Every layer — database schema, row-level security, React components, and hosting — was owned end-to-end.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## ✨ Features
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- 🗂️ **Product Catalogue** — Browse full product range with categories and details
+- ⚡ **Real-time Data** — Supabase real-time sync keeps content always up to date
+- 🔒 **Row-Level Security** — Supabase RLS ensures data is served safely
+- 📱 **Fully Responsive** — Mobile-first design with Tailwind CSS
+- 🚀 **Fast Load** — Optimised React build with minimal bundle size
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🏗️ Architecture
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```mermaid
+graph TB
+    subgraph Frontend ["⚛️ React App"]
+        Pages["Pages<br/>Catalogue / Product Detail"]
+        Components["Components<br/>ProductCard / Navbar / Filter"]
+        Hooks["Custom Hooks<br/>useProducts / useCategories"]
+    end
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    subgraph Supabase ["🔋 Supabase Backend"]
+        RT["Real-time Engine"]
+        DB["PostgreSQL Database"]
+        RLS["Row-Level Security"]
+        Storage["Storage<br/>Product Images"]
+    end
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    Pages --> Components
+    Components --> Hooks
+    Hooks -->|"Supabase Client"| RT
+    RT --> DB
+    DB --> RLS
+    Hooks --> Storage
+```
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🗄️ Database Schema
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```mermaid
+erDiagram
+    CATEGORY {
+        uuid id PK
+        string name
+        string slug
+        string description
+    }
+    PRODUCT {
+        uuid id PK
+        uuid category_id FK
+        string name
+        string description
+        string image_url
+        decimal price
+        boolean in_stock
+        datetime created_at
+    }
 
-### Code Splitting
+    CATEGORY ||--o{ PRODUCT : "contains"
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## ⚙️ Tech Stack
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+| Layer | Technology |
+|-------|-----------|
+| Frontend | React 18, JavaScript |
+| Styling | Tailwind CSS |
+| Backend | Supabase (PostgreSQL + Real-time) |
+| Auth / Security | Supabase Row-Level Security |
+| Media | Supabase Storage |
+| Deployment | Live at bhawanienterprise.co.in |
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🛠️ Local Setup
 
-### Advanced Configuration
+```bash
+# 1. Clone the repo
+git clone https://github.com/Tushal27/bhawani-enterprises.git
+cd bhawani-enterprises
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+# 2. Install dependencies
+npm install
 
-### Deployment
+# 3. Create .env file
+cp .env.example .env
+# Add your Supabase project URL and anon key
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+# 4. Start dev server
+npm start
+```
 
-### `npm run build` fails to minify
+### Environment Variables
+```env
+REACT_APP_SUPABASE_URL=https://your-project.supabase.co
+REACT_APP_SUPABASE_ANON_KEY=your_anon_key
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## 📁 Project Structure
+
+```
+bhawani-enterprises/
+├── src/
+│   ├── components/     # Reusable UI — ProductCard, Navbar, Filter
+│   ├── pages/          # Catalogue, Product Detail
+│   ├── hooks/          # useProducts, useCategories
+│   ├── lib/            # Supabase client config
+│   └── index.js        # Entry point
+├── public/
+└── package.json
+```
+
+---
+
+<div align="center">
+
+Built with ❤️ by [Tushal J](https://github.com/Tushal27) · [🌐 Live Site](https://bhawanienterprise.co.in) · [LinkedIn](https://linkedin.com/in/tushal-j)
+
+</div>
