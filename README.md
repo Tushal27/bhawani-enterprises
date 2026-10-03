@@ -2,15 +2,14 @@
 
 # 🛍️ Bhawani Enterprises
 
-**A live client-facing product catalogue with real-time Supabase backend**
+**A client-facing product catalogue with a real-time Supabase backend**
 
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev)
 [![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)](https://postgresql.org)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
-[![Live](https://img.shields.io/badge/Live-bhawanienterprise.co.in-1A56A8?style=for-the-badge&logo=vercel&logoColor=white)](https://bhawanienterprise.co.in)
 
-### 🌐 [bhawanienterprise.co.in](https://bhawanienterprise.co.in)
+> **Status: archived.** The Supabase project behind the site is offline, so the deployed site loads but its catalogue data does not. This repository is the source code and architecture.
 
 </div>
 
